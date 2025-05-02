@@ -3,18 +3,35 @@
 /* Apply a background gradient for extra visual appeal */
 .main-header {
     display: flex;
+    position: fixed;
     align-items: center;
     justify-content: space-between;
     background: linear-gradient(to right, #0033a0, #006BFF); /* Blue to Yellow Gradient */
-    padding: 20px 30px;
-    border-radius: 10px; /* Soft rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    padding: 2px 30px;
+    z-index: 999;
+    top: 0;              
+    left: 0;
+    right: 0;
     flex-wrap: wrap; /* Ensure flex items wrap on smaller screens */
   }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* spacing between the items */
+  }
+  
+  .logo h1 {
+    margin: 0;
+    font-size: 24px;
+    font-family: 'Joan', sans-serif;
+  }
+  
   
   /* Logo styling */
   .logo img {
-    height: 80px;
+    height: 60px;
+    padding: 0px 10px;
     transition: transform 0.3s ease-in-out;
   }
   
@@ -38,7 +55,7 @@
   
   .nav-menu ul {
     display: flex;
-    gap: 40px;
+    gap: 20px;
     margin: 0;
   }
   
@@ -67,9 +84,10 @@
   /* Add responsiveness for mobile */
   @media (max-width: 768px) {
     .main-header {
-      flex-direction: column;
-      align-items: center;
-      padding: 15px;
+      display: flex;
+      align-items:start;
+      padding: 5px;
+      justify-content: space-between;
       text-align: center;
     }
   
@@ -93,7 +111,10 @@
     }
   
     .hamburger {
-      display: block; /* Show hamburger icon on small screens */
+      display: block;
+      padding: 5px 10px;
+      align-items: center;
+      color: #000;
     }
   }
   

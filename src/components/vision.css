@@ -1,0 +1,52 @@
+/* src/components/Vision.css */
+
+.vision-section {
+    background-color: #f8fbff;
+    padding: 80px 20px;
+    color: #003366;
+  }
+  
+  .vision-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .vision-text {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .vision-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #002b5c;
+  }
+  
+  .vision-text p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
+  
+  .quote {
+    font-style: italic;
+    font-weight: bold;
+    color: #ffcc00;
+  }
+  
+  .vision-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+  }
+  
+  .vision-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  

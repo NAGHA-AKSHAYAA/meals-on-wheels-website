@@ -27,6 +27,7 @@
   /* Overlay to ensure the text is on top of the background */
   .overlay {
     text-align: center;
+    margin-top: 100px;
     z-index: 2; /* Ensure text is above the blurred background */
     color: white;
     font-family: 'Roboto', sans-serif;

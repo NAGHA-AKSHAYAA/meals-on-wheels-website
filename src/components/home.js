@@ -23,7 +23,7 @@ const Home = () => {
       } else {
         clearInterval(dayInterval);
       }
-    }, 5); // adjust speed if needed
+    }, 20); // adjust speed if needed
 
     // Animate souls count
     let j = 0;
@@ -53,7 +53,6 @@ const Home = () => {
         <h2 className="heading">
           <span>{souls.toLocaleString()}</span> hungry souls nourished.
         </h2>
-        <h3 className="tagline">One meal at a time, we serve LOVE.</h3>
       </div>
     </div>
   );

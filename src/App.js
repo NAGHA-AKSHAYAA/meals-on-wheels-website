@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Header from './components/header';
 import Home from './components/home';
+import Vision from './components/vision';
+import Contact from './components/contact';
+import Service from './components/service';
 
 function App() {
   const [homeKey, setHomeKey] = useState(0);
@@ -12,7 +15,12 @@ function App() {
   return (
     <>
       <Header onHomeClick={handleHomeClick} />
-      <Home key={homeKey} />
+      <div className="page-content">
+        <Home key={homeKey} />
+        <Vision />
+        <Contact />
+        <Service/>
+      </div>
     </>
   );
 }
