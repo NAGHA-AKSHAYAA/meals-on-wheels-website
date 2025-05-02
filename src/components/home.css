@@ -1,0 +1,70 @@
+/* src/components/Home.css */
+
+.home-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  /* Background styling */
+  .background {
+    background-image: url('../assets/homepage-bg.jpg'); /* Reference the image */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the image */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(10px); /* Apply a blur effect */
+    z-index: 1; /* Ensure background is behind content */
+  }
+  
+  /* Overlay to ensure the text is on top of the background */
+  .overlay {
+    text-align: center;
+    z-index: 2; /* Ensure text is above the blurred background */
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .heading {
+    font-weight: 900; /* Bold and heavy */
+    font-size: 64px; /* Large size */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Shadow effect for better visibility */
+    animation: fadeIn 2s ease-in-out; /* Animation effect */
+  }
+  
+  /* Smooth transition for numbers */
+  .heading span {
+    display: inline-block;
+    font-size: 64px;
+    font-weight: bold;
+    color: #feb47b;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* Animation for fading in the text */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Tagline styling */
+  .tagline {
+    font-size: 32px;
+    color: white;
+    margin-top: 20px;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  

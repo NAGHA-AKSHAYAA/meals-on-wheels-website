@@ -1,0 +1,99 @@
+/* src/components/Header.css */
+
+/* Apply a background gradient for extra visual appeal */
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to right, #0033a0, #006BFF); /* Blue to Yellow Gradient */
+    padding: 20px 30px;
+    border-radius: 10px; /* Soft rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    flex-wrap: wrap; /* Ensure flex items wrap on smaller screens */
+  }
+  
+  /* Logo styling */
+  .logo img {
+    height: 80px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .logo img:hover {
+    transform: scale(1.1); /* Slightly enlarge the logo on hover */
+  }
+  
+  /* Navigation menu styling */
+  .nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    margin: 0;
+    flex-wrap: wrap; /* Make sure items wrap when screen is smaller */
+  }
+  
+  /* Hide the navigation menu on smaller screens */
+  .nav-menu {
+    display: flex;
+  }
+  
+  .nav-menu ul {
+    display: flex;
+    gap: 40px;
+    margin: 0;
+  }
+  
+  .nav-menu a {
+    text-decoration: none;
+    color: #ffffff; /* White text */
+    font-family: 'Joan', sans-serif; /* Modern font */
+    font-weight: 1500;
+    font-size: 30px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .nav-menu a:hover {
+    color: #ffd700; /* Yellow color on hover */
+    transform: scale(1.1); /* Enlarge the text on hover */
+  }
+  
+  /* Add hamburger icon styling */
+  .hamburger {
+    display: none;
+    font-size: 30px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  
+  /* Add responsiveness for mobile */
+  @media (max-width: 768px) {
+    .main-header {
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+      text-align: center;
+    }
+  
+    .nav-menu {
+      display: none; /* Hide the nav menu initially on small screens */
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 10px;
+    }
+  
+    .nav-menu.active {
+      display: flex; /* Show the nav menu when active */
+    }
+  
+    .logo img {
+      height: 60px; /* Adjust logo size for smaller screens */
+    }
+  
+    .nav-menu a {
+      font-size: 16px; /* Adjust font size for smaller screens */
+    }
+  
+    .hamburger {
+      display: block; /* Show hamburger icon on small screens */
+    }
+  }
+  
