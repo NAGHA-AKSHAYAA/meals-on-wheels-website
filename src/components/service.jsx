@@ -20,6 +20,8 @@ const Service = () => {
   });
 
   // Fetch services from backend
+  console.log("Hello: ",BASE_URL);
+
   useEffect(() => {
     axios
       .get(`${BASE_URL}/api/services`)
@@ -63,8 +65,7 @@ const Service = () => {
       }
 
       setShowForm(false);
-      setFormData({ title: "", description: "", image: null, pin: "" });
-
+      setFormData({ title: "", description: "", image: null, pin: "" });      
       const res = await axios.get(`${BASE_URL}/api/services`);
       setServices(res.data);
     } catch (err) {
