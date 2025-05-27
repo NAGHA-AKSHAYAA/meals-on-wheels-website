@@ -4,6 +4,7 @@ import Home from './components/home';
 import Vision from './components/vision';
 import Contact from './components/contact';
 import Service from './components/service';
+import Blog from './components/blog';
 
 function App() {
   const [homeKey, setHomeKey] = useState(0);
@@ -20,9 +21,12 @@ function App() {
         <Vision />
         <Contact />
         <Service/>
+        <Blog />
       </div>
     </>
   );
 }
 
 export default App;
+
+

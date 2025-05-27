@@ -65,7 +65,33 @@
     font-size: 32px;
     color: white;
     margin-top: 20px;
-    font-weight: 600;
+    font-weight: 300;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   }
   
+  .overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;       /* space between headings and tagline */
+  margin-top: 100px;
+  z-index: 2;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  padding: 0 20px;  /* add some horizontal padding on small screens */
+  box-sizing: border-box;
+}
+
+/* Responsive font size for smaller devices */
+@media (max-width: 600px) {
+  .heading {
+    font-size: 32px;
+  }
+  .heading span {
+    font-size: 32px;
+  }
+  .tagline {
+    font-size: 18px;
+    margin-top: 0;
+  }
+}

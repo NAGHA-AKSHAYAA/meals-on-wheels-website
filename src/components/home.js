@@ -1,6 +1,6 @@
 // src/components/Home.js
-import React, { useState, useEffect } from 'react';
-import './home.css';
+import React, { useState, useEffect } from "react";
+import "./home.css";
 
 const Home = () => {
   const [days, setDays] = useState(0);
@@ -8,7 +8,7 @@ const Home = () => {
 
   useEffect(() => {
     // Calculate days from Dec 16, 2024 to today
-    const startDate = new Date('2024-12-16');
+    const startDate = new Date("2024-12-16");
     const today = new Date();
     const timeDiff = today - startDate;
     const totalDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // Convert ms to days

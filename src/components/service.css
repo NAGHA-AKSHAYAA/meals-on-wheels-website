@@ -27,7 +27,6 @@
   
   .image-container {
     height: 250px;
-    margin: 0px 0px 0 20px; 
     overflow: hidden;
     position: relative;
   }
@@ -51,6 +50,15 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     min-height: 100px;
   }
+
+  .add-service-btn {
+  margin-bottom: 1rem;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 
   .hamburger {
     align-items: right;
@@ -124,3 +132,91 @@
     z-index: 1001;
   }
   
+
+  .dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog-box {
+  background-color: #fff;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.dialog-header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.dialog-close {
+  font-size: 24px;
+  cursor: pointer;
+  color: #555;
+}
+
+.dialog-form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.dialog-form input[type="text"],
+.dialog-form textarea,
+.dialog-form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.dialog-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.dialog-form button:hover {
+  background-color: #303f9f;
+}
