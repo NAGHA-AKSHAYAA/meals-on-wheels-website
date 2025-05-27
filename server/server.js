@@ -13,6 +13,10 @@ app.use('/api/services', serviceRoutes);
 const blogRouter = require("./routes/blogRoutes");
 app.use("/api/blogs", blogRouter);
 
+app.get('/', (req, res) => {
+  res.json({ message: 'API is working!' });
+});
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
