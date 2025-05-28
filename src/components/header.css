@@ -123,3 +123,23 @@
     font-size: 16px;
   }
 }
+
+@media (min-width: 769px) {
+  .nav-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    position: static; /* Remove absolute positioning */
+    background: none; /* Remove background for inline menu */
+    padding: 0;
+    align-items: center;
+  }
+
+  .nav-menu ul {
+    gap: 20px;
+  }
+
+  .hamburger {
+    display: none; /* Hide hamburger on large screens */
+  }
+}
