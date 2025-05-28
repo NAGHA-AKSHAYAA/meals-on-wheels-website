@@ -105,7 +105,13 @@ const Blog = () => {
         const res = await axios.get(`${BASE_URL}/api/blogs`);
         setBlogs(res.data);
         // Reset form
-        setFormData({ title: "", description: "", image: null, pdf: null, pin: "" });
+        setFormData({
+          title: "",
+          description: "",
+          image: null,
+          pdf: null,
+          pin: "",
+        });
         setShowForm(false);
       } else {
         toast.error(response.data.message);
@@ -136,13 +142,15 @@ const Blog = () => {
       <button onClick={() => setShowForm(true)} className="add-blog-btn">
         Add Blog Post
       </button>
-
       {showForm && (
         <div className="blog-dialog-overlay">
           <div className="blog-dialog-box">
             <div className="blog-dialog-header">
               <h3>Add a New Blog Post</h3>
-              <span className="blog-dialog-close" onClick={() => setShowForm(false)}>
+              <span
+                className="blog-dialog-close"
+                onClick={() => setShowForm(false)}
+              >
                 &times;
               </span>
             </div>
@@ -195,7 +203,6 @@ const Blog = () => {
           </div>
         </div>
       )}
-
       <div className="blogs-container">
         <Slider {...settings}>
           {blogs.map((blog) => (
@@ -203,6 +210,7 @@ const Blog = () => {
               {blog.image && (
                 <div
                   className="blog-image-container"
+                  style={{ backgroundImage: `url(${blog.image})` }}
                   onClick={() => openLightbox(blog.image)}
                 >
                   <img src={blog.image} alt={blog.title} loading="lazy" />
@@ -224,25 +232,30 @@ const Blog = () => {
           ))}
         </Slider>
       </div>
-
       {lightboxImage && (
         <div className="blog-lightbox" onClick={closeLightbox}>
           <span className="blog-close-btn" onClick={closeLightbox}>
             &times;
           </span>
-          <img src={lightboxImage} alt="Enlarged" className="blog-lightbox-img" />
+          <img
+            src={lightboxImage}
+            alt="Enlarged"
+            className="blog-lightbox-img"
+          />
         </div>
       )}
-
       {pdfUrl && (
         <div className="blog-lightbox" onClick={closePdfViewer}>
           <span className="blog-close-btn" onClick={closePdfViewer}>
             &times;
           </span>
-          <iframe src={pdfUrl} className="pdf-viewer" title="PDF Viewer"></iframe>
+          <iframe
+            src={pdfUrl}
+            className="pdf-viewer"
+            title="PDF Viewer"
+          ></iframe>
         </div>
       )}
-      
       <ToastContainer position="top-center" autoClose={3000} />
     </section>
   );

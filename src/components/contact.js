@@ -23,7 +23,7 @@ const Contact = () => {
           </div>
           <div className="contact-item">
             <span className="label"><FaEnvelope /> Email:</span>
-            <span className="value">ravichandranathithian@gmail.com</span>
+            <span className="value">ravichandranathithan@gmail.com</span>
           </div>
           <div className="contact-item">
             <span className="label"><FaMapMarkerAlt /> Address:</span>
