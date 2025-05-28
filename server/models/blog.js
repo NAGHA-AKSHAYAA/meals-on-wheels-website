@@ -13,7 +13,7 @@ const BlogSchema = new mongoose.Schema({
   image: {
     type: String
   },
-  pdf: {
+  htmlContent: {
     type: String
   },
   createdAt: {

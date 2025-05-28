@@ -11,13 +11,13 @@ import BASE_URL from "../api";
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [lightboxImage, setLightboxImage] = useState(null);
-  const [pdfUrl, setPdfUrl] = useState(null);
+  const [htmlContent, setHtmlContent] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     image: null,
-    pdf: null,
+    htmlContent: "",
     pin: "",
   });
   const [uploading, setUploading] = useState(false);
@@ -39,8 +39,8 @@ const Blog = () => {
   const openLightbox = (image) => setLightboxImage(image);
   const closeLightbox = () => setLightboxImage(null);
 
-  const openPdfViewer = (pdf) => setPdfUrl(pdf);
-  const closePdfViewer = () => setPdfUrl(null);
+  const openHtmlViewer = (content) => setHtmlContent(content);
+  const closeHtmlViewer = () => setHtmlContent(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -49,10 +49,6 @@ const Blog = () => {
 
   const handleImageChange = (e) => {
     setFormData((prev) => ({ ...prev, image: e.target.files[0] }));
-  };
-
-  const handlePdfChange = (e) => {
-    setFormData((prev) => ({ ...prev, pdf: e.target.files[0] }));
   };
 
   const uploadToCloudinary = async (file, resourceType = "image") => {
@@ -78,16 +74,10 @@ const Blog = () => {
 
     try {
       let imageUrl = null;
-      let pdfUrl = null;
 
       // Upload image if exists
       if (formData.image) {
         imageUrl = await uploadToCloudinary(formData.image, "image");
-      }
-
-      // Upload PDF if exists
-      if (formData.pdf) {
-        pdfUrl = await uploadToCloudinary(formData.pdf, "raw");
       }
 
       // Submit to backend
@@ -95,7 +85,7 @@ const Blog = () => {
         title: formData.title,
         description: formData.description,
         image: imageUrl,
-        pdf: pdfUrl,
+        htmlContent: formData.htmlContent,
         pin: formData.pin,
       });
 
@@ -109,7 +99,7 @@ const Blog = () => {
           title: "",
           description: "",
           image: null,
-          pdf: null,
+          htmlContent: "",
           pin: "",
         });
         setShowForm(false);
@@ -118,7 +108,7 @@ const Blog = () => {
       }
     } catch (err) {
       console.error(err);
-      toast.error(err);
+      toast.error(err.response?.data?.message || "Error submitting blog");
     } finally {
       setUploading(false);
     }
@@ -180,13 +170,15 @@ const Blog = () => {
                 onChange={handleImageChange}
                 required
               />
-              <label>PDF File (Optional)</label>
-              <input
-                type="file"
-                name="pdf"
-                accept="application/pdf"
-                onChange={handlePdfChange}
-              />
+              <label>HTML Content (Optional)</label>
+              <textarea
+                name="htmlContent"
+                placeholder="Enter HTML content here"
+                value={formData.htmlContent}
+                onChange={handleInputChange}
+                rows="8"
+                style={{ fontFamily: 'monospace', fontSize: '12px' }}
+              ></textarea>
               <label>Pin</label>
               <input
                 type="text"
@@ -219,12 +211,12 @@ const Blog = () => {
               <div className="blog-content">
                 <h3>{blog.title}</h3>
                 <p>{blog.description}</p>
-                {blog.pdf && (
+                {blog.htmlContent && (
                   <button
-                    className="pdf-view-btn"
-                    onClick={() => openPdfViewer(blog.pdf)}
+                    className="html-view-btn"
+                    onClick={() => openHtmlViewer(blog.htmlContent)}
                   >
-                    View PDF
+                    View Content
                   </button>
                 )}
               </div>
@@ -244,16 +236,17 @@ const Blog = () => {
           />
         </div>
       )}
-      {pdfUrl && (
-        <div className="blog-lightbox" onClick={closePdfViewer}>
-          <span className="blog-close-btn" onClick={closePdfViewer}>
+      {htmlContent && (
+        <div className="blog-lightbox" onClick={closeHtmlViewer}>
+          <span className="blog-close-btn" onClick={closeHtmlViewer}>
             &times;
           </span>
-          <iframe
-            src={pdfUrl}
-            className="pdf-viewer"
-            title="PDF Viewer"
-          ></iframe>
+          <div className="html-viewer">
+            <div 
+              dangerouslySetInnerHTML={{ __html: htmlContent }}
+              className="html-content"
+            />
+          </div>
         </div>
       )}
       <ToastContainer position="top-center" autoClose={3000} />

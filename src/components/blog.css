@@ -88,19 +88,22 @@
   margin-bottom: 1rem;
 }
 
-.pdf-view-btn {
+.html-view-btn {
   display: inline-block;
   padding: 8px 16px;
-  background-color: #e74c3c;
+  background-color: #28a745;
   color: white;
   text-decoration: none;
   border-radius: 4px;
+  border: none;
   margin-top: 10px;
+  cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 14px;
 }
 
-.pdf-view-btn:hover {
-  background-color: #c0392b;
+.html-view-btn:hover {
+  background-color: #218838;
 }
 
 /* Slick slider customizations */
@@ -157,11 +160,141 @@
   z-index: 1001;
 }
 
-.pdf-viewer {
+.html-viewer {
   width: 90%;
   height: 90%;
-  border: none;
+  background: #fff;
   border-radius: 10px;
+  overflow: auto;
+  position: relative;
+}
+
+.html-content {
+  padding: 20px;
+  max-width: 100%;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+/* Styles for HTML content to make it look good */
+.html-content h1,
+.html-content h2,
+.html-content h3,
+.html-content h4,
+.html-content h5,
+.html-content h6 {
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.html-content h1 {
+  font-size: 2.5em;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.html-content h2 {
+  font-size: 2em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.html-content h3 {
+  font-size: 1.7em;
+}
+
+.html-content h4 {
+  font-size: 1.4em;
+}
+
+.html-content p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.html-content ul,
+.html-content ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.html-content li {
+  margin-bottom: 5px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.html-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 15px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.html-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: white;
+}
+
+.html-content th,
+.html-content td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.html-content th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  color: #333;
+}
+
+.html-content blockquote {
+  border-left: 4px solid #007bff;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  font-style: italic;
+  color: #666;
+}
+
+.html-content code {
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: 'Courier New', monospace;
+  color: #e83e8c;
+}
+
+.html-content pre {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  overflow-x: auto;
+  margin: 15px 0;
+}
+
+.html-content pre code {
+  background: none;
+  padding: 0;
+  color: #333;
+}
+
+.html-content a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.html-content a:hover {
+  text-decoration: underline;
 }
 
 .blog-dialog-overlay {
@@ -182,11 +315,13 @@
   background-color: #fff;
   border-radius: 16px;
   width: 90%;
-  max-width: 500px;
+  max-width: 600px;
+  max-height: 90vh;
   padding: 24px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   animation: slideIn 0.3s ease-out;
   position: relative;
+  overflow-y: auto;
 }
 
 .blog-dialog-header {
@@ -194,6 +329,10 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
 }
 
 .blog-dialog-header h3 {
@@ -223,22 +362,37 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 14px;
+  box-sizing: border-box;
+}
+
+.blog-dialog-form textarea[name="htmlContent"] {
+  min-height: 150px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .blog-dialog-form button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #3f51b5;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 16px;
   transition: background-color 0.3s;
+  margin-top: 10px;
 }
 
-.blog-dialog-form button:hover {
+.blog-dialog-form button:hover:not(:disabled) {
   background-color: #303f9f;
+}
+
+.blog-dialog-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 @keyframes slideIn {
@@ -249,5 +403,35 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsive styles for HTML viewer */
+@media (max-width: 768px) {
+  .html-viewer {
+    width: 95%;
+    height: 85%;
+  }
+  
+  .html-content {
+    padding: 15px;
+  }
+  
+  .blog-close-btn {
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+  }
+  
+  .html-content h1 {
+    font-size: 2em;
+  }
+  
+  .html-content h2 {
+    font-size: 1.7em;
+  }
+  
+  .html-content h3 {
+    font-size: 1.4em;
   }
 }

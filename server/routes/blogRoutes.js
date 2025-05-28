@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 // Create a new blog
 router.post('/', async (req, res) => {
   try {
-    const { title, description, image, pdf, pin } = req.body;
+    const { title, description, image, htmlContent, pin } = req.body;
 
     if (pin !== process.env.ADMIN_PIN) {
       return res.status(401).json({ message: 'Pin Invalid' });
@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
       title,
       description,
       image,
-      pdf
+      htmlContent,
     });
 
     const savedBlog = await newBlog.save();
